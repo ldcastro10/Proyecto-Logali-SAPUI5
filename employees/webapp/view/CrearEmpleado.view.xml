@@ -1,0 +1,114 @@
+<mvc:View controllerName="logaligroup.employees.controller.CrearEmpleado"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" class="sapUiResponsiveContentPadding" title="{i18n>titleCrear}" titleAlignment="Center" navButtonPress="onNavBackCrear" showNavButton="true">
+        <content>
+            <Wizard id="wizardId" navigationChange="navigationChange" showNextButton="false" class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+                <WizardStep id="TipoStep" title="{i18n>titleStep1}">
+                    <MessageStrip id="infoStep1" class="sapUiSmallMarginBottom" text="{i18n>infoStep1}" showIcon="true"/>
+                    <HBox id="hboxBtns" alignItems="Center" justifyContent="Center" width="100%">
+                        <Button id="btnInterno" text="{i18n>btnInterno}" press="onPaso2" class="sapUiSmallMarginEnd"/>
+                        <Button id="btnAutonomo" text="{i18n>btnAutonomo}" press="onPaso2" class="sapUiSmallMarginEnd"/>
+                        <Button id="btnGerente" text="{i18n>btnGerente}" press="onPaso2"/>
+                    </HBox>
+                </WizardStep>
+                <WizardStep id="DatosStep" title="{i18n>titleStep2}">
+                    <MessageStrip id="infoStep2" class="sapUiSmallMarginBottom" text="{i18n>infoStep2}" showIcon="true"/>
+                    <f:Form id="form" editable="true">
+                        <f:layout>
+                            <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="2" labelSpanS="12" 
+                            adjustLabelSpan="false" emptySpanXL="3" emptySpanL="3" emptySpanM="2" emptySpanS="0" columnsXL="1" 
+                            columnsL="1" columnsM="1" singleContainerFullSize="true" />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:FormElement label="{i18n>nombre}">
+                                    <f:fields>
+                                        <Input id="FirstName" required="true" value="{/creado/FirstName}" change="onChangeInput" 
+                                        valueState="{/valueState/FirstName}" valueStateText="{/valueState/FirstNameText}">
+                                            <layoutData>
+                                                <l:GridData span="XL6 L6 M8 S12" />
+                                            </layoutData>
+                                        </Input>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:FormElement label="{i18n>apellidos}">
+                                    <f:fields>
+                                        <Input required="true" id="LastName" value="{/creado/LastName}" change="onChangeInput" 
+                                        valueState="{/valueState/LastName}" valueStateText="{/valueState/LastNameText}">
+                                            <layoutData>
+                                                <l:GridData span="XL6 L6 M8 S12" />
+                                            </layoutData>
+                                        </Input>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:FormElement label="{/varios/dniText}">
+                                    <f:fields>
+                                        <Input required="true" id="Dni" value="{/creado/Dni}" valueState="{/valueState/Dni}" 
+                                        valueStateText="{/valueState/DniText}" change="verificarDni">
+                                            <layoutData>
+                                                <l:GridData span="XL6 L6 M8 S12" />
+                                            </layoutData>
+                                        </Input>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:FormElement label="{/varios/saldoText}">
+                                    <f:fields>
+                                        <Slider id="sliderSaldoBruto" value="{/creado/UserToSalary/Ammount}" min="{/sliders/minSaldoBruto}" 
+                                        max="{/sliders/maxSaldoBruto}" enableTickmarks="true" class="sapUiMediumMarginBottom" width="100%">
+                                            <layoutData>
+                                                <l:GridData span="XL6 L6 M8 S12" />
+                                            </layoutData>
+                                        </Slider>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:FormElement label="{i18n>CreationDate}">
+                                    <f:fields>
+                                        <DatePicker id="CreationDate" value="{/creado/CreationDate}" change="onChangeInput" 
+                                        valueState="{/valueState/CreationDate}" valueStateText="{/valueState/CreationDateText}" required="true">
+                                            <layoutData>
+                                                <l:GridData span="XL6 L6 M8 S12" />
+                                            </layoutData>
+                                        </DatePicker>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                    <Button class="sapUiSmallMarginBegin" text="{i18n>paso3}" type="Emphasized" press="onPaso3"/>
+                </WizardStep>
+                <WizardStep id="InfoStep" title="{i18n>titleStep3}">
+                    <MessageStrip id="infoStep3" class="sapUiSmallMarginBottom" text="{i18n>infoStep3}" showIcon="true"/>
+                    <VBox width="100%">
+                        <Text text="{i18n>comentario}"/>
+                        <TextArea width="100%" value="{/creado/Comments}"/>
+                        <UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" 
+                        sameFilenameAllowed="true" instantUpload="false" 
+                        noDataDescription="Drop files or use the &quot;Add&quot; button to keep files ready for upload" 
+                        change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" 
+                        fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" 
+                        beforeUploadStarts="onBeforeUploadStarts" />
+                        <Button text="{i18n>revisar}" type="Emphasized" press="onRevision"/>
+                    </VBox>
+                </WizardStep>
+            </Wizard>
+        </content>
+        <footer>
+            <OverflowToolbar id="toolbarBtn">
+                <ToolbarSpacer id="spacerBtn"/>
+                <Button id="btnCancelar" type="Emphasized" text="{i18n>cancelar}" press="onNavBackCrear"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,168 @@
+<mvc:View controllerName="logaligroup.employees.controller.Revision"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" class="sapUiResponsiveContentPadding" title="{i18n>resumen}" titleAlignment="Center">
+        <content>
+            <Panel>
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>tituloPanel1Resumen}"/>
+                        <ToolbarSpacer/>
+                        <Link id="Panel1" text="{i18n>editar}" press="onEditar"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <f:Form editable="true">
+                    <f:layout>
+                        <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="2" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="3" emptySpanL="3" emptySpanM="2" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true" />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:FormElement label="{i18n>tipo}">
+                                <f:fields>
+                                    <Text id="tipo">
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </Text>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+            </Panel>
+            <Panel>
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>tituloPanel2Resumen}"/>
+                        <ToolbarSpacer/>
+                        <Link id="Panel2" text="{i18n>editar}" press="onEditar"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <f:Form editable="true">
+                    <f:layout>
+                        <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="2" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="3" emptySpanL="3" emptySpanM="2" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true" />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:FormElement label="{i18n>nombre}">
+                                <f:fields>
+                                    <Text text="{/creado/FirstName}">
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </Text>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:FormElement label="{i18n>apellidos}">
+                                <f:fields>
+                                    <Text text="{/creado/LastName}">
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </Text>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:FormElement label="{/varios/dniText}">
+                                <f:fields>
+                                    <Text text="{/creado/Dni}">
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </Text>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:FormElement label="{/varios/saldoText}">
+                                <f:fields>
+                                    <Text text="{/creado/UserToSalary/Ammount}">
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </Text>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:FormElement label="{i18n>fechaincorporacion}">
+                                <f:fields>
+                                    <Text text="{/creado/CreationDate}">
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </Text>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+            </Panel>
+            <Panel>
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>tituloPanel3Resumen}"/>
+                        <ToolbarSpacer/>
+                        <Link id="Panel3" text="{i18n>editar}" press="onEditar"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <f:Form editable="true">
+                    <f:layout>
+                        <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="2" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="3" emptySpanL="3" emptySpanM="2" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true" />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:FormElement label="{i18n>comentario}">
+                                <f:fields>
+                                    <Text text="{/creado/Comments}">
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </Text>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:FormElement label="{i18n>documentos}">
+                                <f:fields>
+                                    <Text text="{/varios/ndocumentos}">
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </Text>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:FormElement label="">
+                                <f:fields>
+                                    <List items="{/varios/files}">
+                                        <items>
+                                            <StandardListItem title="{DocName}"></StandardListItem>
+                                        </items>
+                                        <layoutData>
+                                            <l:GridData span="XL6 L6 M8 S12" />
+                                        </layoutData>
+                                    </List>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+            </Panel>
+        </content>
+        <footer>
+            <OverflowToolbar id="toolbarBtn">
+                <ToolbarSpacer id="spacerBtn"/>
+                <Button id="btnGuardar" text="{i18n>guardar}" press="onGuardar"/>
+                <Button id="btnCancelar" text="{i18n>cancelar}" press="onNavBack"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
